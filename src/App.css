@@ -94,14 +94,16 @@ body {
 }
 
 .cal-cell {
-  padding: 6px 7px;
-  min-height: 138px;
-  border-right: 0.5px solid #eee;
+  padding: 7px 6px;
+  min-height: 155px;
+  vertical-align: top;
+  overflow: hidden;
 }
 
 .cal-date {
-  font-size: 11px;
-  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
   text-align: right;
 }
 

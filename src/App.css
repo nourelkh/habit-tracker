@@ -94,8 +94,8 @@ body {
 }
 
 .cal-cell {
-  padding: 7px 6px;
-  min-height: 155px;
+  padding: 8px 6px;
+  min-height: 220px;
   vertical-align: top;
   overflow: hidden;
 }

@@ -324,7 +324,7 @@ function MonthView({ year, month, checked, toggle, isDone, tk }) {
                         <button key={h.id} onClick={() => !isFuture && toggle(h.id, year, month, day)}
                           style={{ display: "flex", alignItems: "center", gap: 4, background: done ? h.bg : "transparent", border: `0.5px solid ${done ? h.color : "transparent"}`, borderRadius: 4, cursor: isFuture ? "default" : "pointer", padding: "1px 3px", opacity: isFuture ? 0.3 : 1, textAlign: "left", width: "100%", transition: "all 0.12s", boxSizing: "border-box" }}>
                           <div style={{ width: 10, height: 10, borderRadius: 2, border: `1.5px solid ${h.color}`, background: done ? h.color : "transparent", flexShrink: 0, transition: "all 0.12s" }} />
-                          <span style={{ fontSize: 12, color: done ? h.color : "#999", textDecoration: done ? "line-through" : "none", lineHeight: 1.2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", fontWeight: done ? 500 : 400 }}>{h.label}</span>
+                          <span style={{fontSize: 14, color: done ? h.color : "#999", textDecoration: done ? "line-through" : "none", lineHeight: 1.2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", fontWeight: done ? 500 : 400 }}>{h.label}</span>
                         </button>
                       );
                     })}

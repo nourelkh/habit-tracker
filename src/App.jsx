@@ -12,7 +12,7 @@ const HABITS = [
   { id: "substack", label: "substack",   color: "#B87A6B", bg: "#F5E8E5" },
   { id: "econ",     label: "econ paper", color: "#6BA888", bg: "#E3F2EC" },
 ];
-const WEEKLY_IDS = ["linkedin", "substack", "econ"];
+const WEEKLY_IDS = [];
 const DAILY = HABITS.filter(h => !WEEKLY_IDS.includes(h.id));
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const DAYS_SHORT = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
@@ -43,11 +43,19 @@ function computeStreak(hid, checked) {
 
 function getMonthStats(y, m, checked) {
   const days = daysInMonth(y, m);
+  const WEEKLY = ["linkedin", "substack", "econ"];
   return HABITS.map(h => {
-    if (WEEKLY_IDS.includes(h.id)) {
+    if (WEEKLY.includes(h.id)) {
       const wks = []; const d = new Date(y, m, 1);
-      while (d.getMonth() === m) { const wk = getMondayKey(d.getFullYear(), d.getMonth(), d.getDate()); if (!wks.includes(wk)) wks.push(wk); d.setDate(d.getDate() + 7); }
-      const done = wks.filter(wk => !!checked[`w_${h.id}_${wk}`]).length;
+      while (d.getMonth() === m) {
+        const wk = getMondayKey(d.getFullYear(), d.getMonth(), d.getDate());
+        if (!wks.includes(wk)) wks.push(wk);
+        d.setDate(d.getDate() + 7);
+      }
+      let done = 0;
+      for (let dd = 1; dd <= days; dd++) {
+        if (checked[`d_${h.id}_${dateKey(y, m, dd)}`]) done++;
+      }
       return { ...h, done, possible: wks.length, pct: Math.round((done / wks.length) * 100) };
     }
     let done = 0;
